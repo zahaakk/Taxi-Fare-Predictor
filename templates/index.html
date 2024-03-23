@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taxi Fare Price Predictor</title>
+<link rel="icon" type="x-icon" href="/static/icon.png">
+<link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/contacts/contact-4/assets/css/contact-4.css" />
+</head>
+<body>
+<section class="bg-light py-3 py-md-5">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
+        <h3 class="fs-6 text-secondary mb-2 text-uppercase text-center">Get in Touch</h3>
+        <h2 class="display-5 mb-4 mb-md-5 text-center">Taxi Fare Price Predictor</h2>
+        <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle">
+      </div>
+    </div>
+  </div>
+  <form action='/predict' method="POST">
+  <div class="container">
+    <div class="row gy-3 gy-md-4 gy-lg-0 align-items-xl-center">
+      <div class="col-12 col-lg-6">
+        <img class="img-fluid rounded" loading="lazy" src="{{ url_for('static',filename = 'background.jpg') }}" alt="">
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="row">
+          <div class="col-6">
+            <div class="mb-3">
+              <label for="email" class="form-label">Passenger Count <span class="text-danger">*</span></label>
+              <input type="number" class="form-control" name="passenger_count" required>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="mb-3">
+              <label for="email" class="form-label"> Month <span class="text-danger">*</span></label>
+              <input type="number" class="form-control" name="Month" required>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="mb-3">
+              <label for="email" class="form-label"> Date <span class="text-danger">*</span></label>
+              <input type="number" class="form-control" name="Date" required>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="mb-3">
+              <label for="email" class="form-label"> Day <span class="text-danger">*</span></label>
+              <input type="number" class="form-control" name="Day" required>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="mb-3">
+              <label for="email" class="form-label"> Hour <span class="text-danger">*</span></label>
+              <input type="number" class="form-control" name="Hour" required>
+            </div>
+          </div>
+           <div class="col-6">
+            <div class="mb-3">
+             <label for="email" class="form-label"> Distance <span class="text-danger">*</span></label>
+              <input type="number" class="form-control" name="distance" step=".01" required>
+            </div>
+          </div>
+        </form>
+          {% if result %}
+          <div class="alert alert-primary" role="alert">
+               <a href="#" class="bold">Estimated Price will be ${{result}}</a>
+              </div>
+              {% endif %}
+          </div>
+          <div class="col-12">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-primary btn-lg me-md-2" type="submit">Calculate Fare</button>
+              <button class="btn btn-secondary btn-lg" value="reset" type="reset">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
+
